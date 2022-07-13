@@ -1,3 +1,3 @@
-Congrats on deploying [[ .postgresql.job_name ]].
+Congrats on deploying [[ .postgres_example.job_name ]].
 
-There are [[ .postgresql.job_name ]] instances of your job now running on Nomad.
+There are [[ .postgres_example.job_name ]] instances of your job now running on Nomad.

@@ -1,70 +1,70 @@
-job [[ .postgresql.job_name ]] 
+job [[ .postgres_example.job_name ]] 
 {
-  datacenters = [[.postgresql.datacenters ]]
-  type = [[ .postgresql.type ]]
-  group [[ .postgresql.job_name ]] 
+  datacenters = [[.postgres_example.datacenters ]]
+  type = [[ .postgres_example.type ]]
+  group [[ .postgres_example.job_name ]] 
   {
     count = 1
-    task [[ .postgresql.job_name ]] 
+    task [[ .postgres_example.job_name ]] 
     {
-      driver = [[ .postgresql.driver ]]
+      driver = [[ .postgres_example.driver ]]
       config 
       {
-        image = [[ .postgresql.config_image ]]
-        network_mode = [[ .postgresql.config_network_mode ]]
+        image = [[ .postgres_example.config_image ]]
+        network_mode = [[ .postgres_example.config_network_mode ]]
         port_map 
         {
-          db = [[ .postgresql.config_network_mode ]]
+          db = [[ .postgres_example.config_network_mode ]]
         }
       }
       env 
       {
-          POSTGRES_USER= [[ .postgresql.env_POSTGRES_USER ]],
-          POSTGRES_PASSWORD= [[ .postgresql.env_POSTGRES_PASSWORD ]]
+          POSTGRES_USER= [[ .postgres_example.env_POSTGRES_USER ]],
+          POSTGRES_PASSWORD= [[ .postgres_example.env_POSTGRES_PASSWORD ]]
       }
 
       logs {
-        max_files     = [[ .postgresql.logs_max_files ]]
-        max_file_size = [[ .postgresql.logs_max_file_size ]]
+        max_files     = [[ .postgres_example.logs_max_files ]]
+        max_file_size = [[ .postgres_example.logs_max_file_size ]]
       }
 
       resources {
-        cpu = [[ .postgresql.resouce_cpu ]]
-        memory = [[ .postgresql.resouce_memory ]]
+        cpu = [[ .postgres_example.resouce_cpu ]]
+        memory = [[ .postgres_example.resouce_memory ]]
         network {
-          mbits = [[ .postgresql.resouce_network_mbits ]]
+          mbits = [[ .postgres_example.resouce_network_mbits ]]
           port  "db"  {
-            static = [[ .postgresql.resouce_network_port_db ]]
+            static = [[ .postgres_example.resouce_network_port_db ]]
           }
         }
       }
       service {
-        name = [[ .postgresql.job_name ]]
-        tags = [[ .postgresql.service_tags ]]
-        port = [[ .postgresql.service_port ]]
+        name = [[ .postgres_example.job_name ]]
+        tags = [[ .postgres_example.service_tags ]]
+        port = [[ .postgres_example.service_port ]]
 
         check {
-          name     = [[ .postgresql.service_check_name ]]
-          type     = [[ .postgresql.service_check_type ]]
-          interval = [[ .postgresql.service_check_interval ]]
-          timeout  = [[ .postgresql.service_check_timeout ]]
+          name     = [[ .postgres_example.service_check_name ]]
+          type     = [[ .postgres_example.service_check_type ]]
+          interval = [[ .postgres_example.service_check_interval ]]
+          timeout  = [[ .postgres_example.service_check_timeout ]]
         }
       }
     }
     restart {
-      attempts = [[ .postgresql.restart_attempts ]]
-      interval = [[ .postgresql.restart_interval ]]
-      delay = [[ .postgresql.restart_delay ]]
-      mode = [[ .postgresql.restart_mode ]]
+      attempts = [[ .postgres_example.restart_attempts ]]
+      interval = [[ .postgres_example.restart_interval ]]
+      delay = [[ .postgres_example.restart_delay ]]
+      mode = [[ .postgres_example.restart_mode ]]
     }
 
   }
 
   update {
-    max_parallel = [[ .postgresql.update_max_parallel ]]
-    min_healthy_time = [[ .postgresql.min_healthy_time ]]
-    healthy_deadline = [[ .postgresql.healthy_deadline ]]
-    auto_revert = [[ .postgresql.auto_revert ]]
-    canary = [[ .postgresql.canary ]]
+    max_parallel = [[ .postgres_example.update_max_parallel ]]
+    min_healthy_time = [[ .postgres_example.min_healthy_time ]]
+    healthy_deadline = [[ .postgres_example.healthy_deadline ]]
+    auto_revert = [[ .postgres_example.auto_revert ]]
+    canary = [[ .postgres_example.canary ]]
   }
 }
